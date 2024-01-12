@@ -23,10 +23,10 @@ if (astronautCount <= 7){
     console.log("Cannot proceed with launch");
 }
 // add logic below to verify all astronauts are ready
-if (!astronautStatus == "ready"){
-    console.log("Not ready for Launch!");
-} else {
+if (astronautStatus == "ready"){
     console.log("Ready for Launch");
+} else {
+    console.log("Not ready for Launch");
 }
 // add logic below to verify the total mass does not exceed the maximum limit of 850000
 if (totalMassKg <= 850000) {
@@ -35,26 +35,35 @@ if (totalMassKg <= 850000) {
     console.log("Total MassKg exeeds the Limit!");
 }
 // add logic below to verify the fuel temperature is within the appropriate range of -150 and -300
-if (fuelTempCelsius <= -150 || fuelTempCelsius >= -300){
-    console.log("Fuel temperature not within acceptable range!");
-    preparedForLiftOff = false;
-}
+if (fuelTempCelsius <= -150 && fuelTempCelsius >= -300){
+    console.log("Fuel temperature is within range");
+}else {
+    console.log("Fuel temperature is not within range");
+
+    }
+
 // add logic below to verify the fuel level is at 100%
-if (!fuelLevel == "100%") {
-    console.log("Fuel is not in Level!");
+if (fuelLevel == "100%") {
+    console.log("Fuel level within the range");
  } else {
-     console.log("Fuel Level is within the range!!!");
+     console.log("Fuel Level is not within the range!!!");
  }
 // add logic below to verify the weather status is clear
  
- if (!weatherStatus == "Clear") {
+ if (weatherStatus == "Clear") {
     console.log("Weather Status is not Clear!");
 } else {
     console.log("Weather Status is Clear!!!");
 }
 // Verify shuttle launch can proceed based on above conditions
-if (astronautCount <= 7 && totalMassKg <= 850000 && fuelTempCelsius <= -300 && fuelLevel == "100%" && weatherStatus == "Clear" && preparedForLiftOff == true) {
-    console.log("Shuttle is ready to Launch!!!");
+if (preparedForLiftOff) {
+    console.log("\nAll systems are a go! Initiating space shuttle launch sequence.");
+    console.log("---------------------------------------------------------------");
+    console.log("Date: ", date, "\nTime: ", time, "\nAstronaut Count: ", astronautCount);
+    console.log("Crew Mass: ", crewMassKg, " kg\nFuel Mass: ", fuelMassKg, " kg \nShuttle Mass: ", shuttleMassKg, " kg\nTotal Mass: ", totalMassKg, " kg");
+    console.log("Fuel Temparature: ", fuelTempCelsius, " °C\nWeather Status: ", weatherStatus);
+    console.log("---------------------------------------------------------------");
+    console.log("Have a safe trip astronauts!");
 } else {
-    console.log("Shuttle is not ready to Launch");
+    console.log("The launch operation has to be SHUT DOWN!");
 }
