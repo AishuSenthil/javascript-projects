@@ -35,8 +35,17 @@ console.log("Hold status: " + holdStatus(cargoHold));
 
 //d). Decide where to best place your function call to gather our new fuel.
 
-/* Next, liberate some of that glorious cargo.
- * /
+// /* Next, liberate some of that glorious cargo.*/
+
+let checkForCleanFuel = function(a) {
+  if (checkFuel(a) === 'green') {
+    return a - 100000;
+  } else if (checkFuel(a) === 'yellow') {
+    return a - 50000;
+  } else {
+    return a;
+  }
+}
 
 //a). Define another anonymous function with an array as a parameter, and set it equal to another innocent variable.
 
@@ -46,12 +55,36 @@ console.log("Hold status: " + holdStatus(cargoHold));
 
 //d). Don’t get hasty, matey! Remember to test your function.
 
-/* Finally, you need to print a receipt for the accountant. Don’t laugh! That genius knows MATH and saves us more gold than you can imagine.
- * /
+// /* Finally, you need to print a receipt for the accountant. Don’t laugh! That genius knows MATH and saves us more gold than you can imagine.* /
  
+
+let fakeCargo = ['football pads', 'silver chain'];
+stolenCargo = [];
+
+let checkForBomb = function (arr) {
+  if (typeof arr === 'object') {
+    stolenCargo = arr.splice(3,2);
+    return arr.concat(fakeCargo);
+  } else {
+    return arr;
+  }
+}
+
+console.log(checkForBomb(cargoHold));
+console.log(stolenCargo);
+
+
+
 //a). Define a function called irs that can take fuelLevel and cargoHold as arguments.
 	
 //b). Call your anonymous fuel and cargo functions from within irs.
 
 //c). Use a template literal to return, "Raided _____ kg of fuel from the tanks, and stole ____ and ____ from the cargo hold."
 
+let irs = function (levelOfFuel, itemsInCargo) {
+  let arr = checkForBomb(itemsInCargo);
+  let arr2 = checkForCleanFuel(levelOfFuel);
+  return `Raided ${checkForCleanFuel(fuelLevel)} kg of fuel from the tanks, and stole ${stolenCargo[0]} and ${stolenCargo[1]} from the cargo hold.`
+}
+
+console.log(irs());
